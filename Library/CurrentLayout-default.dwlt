@@ -413,7 +413,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.04468768, y: 0.8004385, z: -0.06014578, w: -0.5947183}
     speed: 2
-    m_Value: {x: -0.044144433, y: 0.8057561, z: -0.060545348, w: -0.5874886}
+    m_Value: {x: -0.044687543, y: 0.800436, z: -0.060145594, w: -0.5947164}
   m_Size:
     m_Target: 3.0042348
     speed: 2
