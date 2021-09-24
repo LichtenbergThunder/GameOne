@@ -15,7 +15,15 @@ public class FPSController : MonoBehaviour
     //マウスカーソル非表示
     private bool cursorLock = true;
     private float minX = -90f, maxX = 90f;
+    //地面判定
+    private bool GroundEnter = false, GroundStay = false, GroundExit = false;
+    private bool isground = false;
 
+    //ジャンプキー
+    bool SpaceKey = false;
+
+    [SerializeField] private float jumpspeed;
+    [SerializeField]private Rigidbody rb;//playerのrigitbody
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +32,7 @@ public class FPSController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     {
         float xRot = Input.GetAxis("Mouse X") * Ysensityvity;
         float yRot = Input.GetAxis("Mouse Y") * Xsensityvity;
@@ -39,22 +47,24 @@ public class FPSController : MonoBehaviour
         transform.localRotation = characterRot;
 
         LateUpdateCursorLock();
-
-        
-    }
-    private void FixedUpdate()
+        SpaceKey = Input.GetButtonDown("Jump");
+        bool isG = Isground();
+        if (SpaceKey && isG)
+        {
+            rb.AddForce(transform.up * jumpspeed);
+        }
+    }//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    private void FixedUpdate()//-----------------------------------------------------
     {
         x = 0;
         z = 0;
-
-        x = Input.GetAxisRaw("Horizontal") * xspeed * zspeed;
-        z = Input.GetAxisRaw("Vertical") * xspeed * zspeed;
-
-        //transform.position += new Vector3(x, 0, z);
+        x = Input.GetAxis("Horizontal") * xspeed * zspeed;
+        z = Input.GetAxis("Vertical") * xspeed * zspeed;
 
         transform.position += cam.transform.forward * z + cam.transform.right * x;
 
-    }
+    }//-----------------------------------------------------------------------------
+
 
     public void LateUpdateCursorLock()
     {
@@ -94,4 +104,41 @@ public class FPSController : MonoBehaviour
         q.x = Mathf.Tan(angleX * Mathf.Deg2Rad * 0.5f);
         return q;
     }
+    private bool Isground()
+    {
+        if (GroundEnter || GroundStay)
+        {
+            isground = true;
+        }
+        else if (GroundExit)
+        {
+            isground = false;
+        }
+        GroundEnter = false;
+        GroundStay = false;
+        GroundExit = false;
+        return isground;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("ground"))
+        {
+            GroundEnter = true;
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("ground"))
+        {
+            GroundStay = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("ground"))
+        {
+            GroundExit = true;
+        }
+    }
+
 }
