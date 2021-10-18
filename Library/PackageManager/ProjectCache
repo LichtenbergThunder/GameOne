@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637673629916327957
+      ticks: 637684266203041613
     m_Hash: 2750867771
   m_LockFileStatus:
     m_FilePath: C:/repos/github/1_GameOn_public/GameOne/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637673629916333071
+      ticks: 637684266203051381
     m_Hash: 4046042876
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -66,6 +66,8 @@ m_PackageAssets:
         - 1.7.1
         - 1.8.0
         - 1.9.0
+        - 1.10.2
+        - 1.11.2
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -80,6 +82,8 @@ m_PackageAssets:
         - 1.7.1
         - 1.8.0
         - 1.9.0
+        - 1.10.2
+        - 1.11.2
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -458,6 +462,7 @@ m_PackageAssets:
         - 10.5.0
         - 10.5.1
         - 10.6.0
+        - 10.7.0
         compatible:
         - 10.6.0
         verified: 10.6.0
